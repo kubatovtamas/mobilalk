@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Appointment</string>
+    <string name="add_new_appointment">Add New Appointment</string>
+    <string name="appointment_type">Appointment Type</string>
+    <string name="check_up">Check-up</string>
+    <string name="emergency">Emergency</string>
+    <string name="follow_up">Follow-up</string>
+    <string name="routine">Routine</string>
+    <string name="walk_in">Walk-in</string>
+    <string name="priority">Priority</string>
+    <string name="duration">Duration</string>
+    <string name="add_participants">Add Participants</string>
+    <string name="submit">Submit</string>
+    <string name="back">Back</string>
+    <string name="list_all">List All</string>
+    <string name="add_new">Add New</string>
+    <string name="appointments">Appointments</string>
+
+    <string-array name="appointment_statuses">
+        <item>Proposed</item>
+        <item>Pending</item>
+        <item>Booked</item>
+        <item>Arrived</item>
+        <item>Fulfilled</item>
+        <item>Cancelled</item>
+        <item>No-Show</item>
+        <item>Entered-In-Error</item>
+        <item>Checked-In</item>
+        <item>Wait-List</item>
+    </string-array>
+</resources>

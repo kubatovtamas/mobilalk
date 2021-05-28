@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "184351916906",
+    "firebase_url": "https://webkert-18bb5-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "webkert-18bb5",
+    "storage_bucket": "webkert-18bb5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184351916906:android:8acd12a68a2885302edb13",
+        "android_client_info": {
+          "package_name": "com.example.appointment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184351916906-bkhctsbua89v785leekutdvmpmiomft0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appointment",
+            "certificate_hash": "2f29efa093ab2802a8e188852bf3efc22ce3cad6"
+          }
+        },
+        {
+          "client_id": "184351916906-htj2tb9la9rpqi6jj4ah27kh0tgu6rsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh-xvamHOban2TRDhmIRPZDQR1voqY078"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184351916906-htj2tb9la9rpqi6jj4ah27kh0tgu6rsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

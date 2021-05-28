@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/item_placeholder"
+            android:textColor="?android:textColorSecondary" />
+
+        <TextView
+            android:id="@+id/itemType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/itemStatus"
+            android:padding="8dp"
+            android:text="@string/item_placeholder"
+            android:textColor="?android:textColorSecondary" />
+
+        <TextView
+            android:id="@+id/itemPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/itemType"
+            android:padding="8dp"
+            android:text="@string/item_placeholder"
+            android:textColor="?android:textColorSecondary" />
+
+        <TextView
+            android:id="@+id/itemStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/item_placeholder"
+            android:layout_below="@id/itemStatus"
+            android:textColor="?android:textColorSecondary" />
+
+        <TextView
+            android:id="@+id/itemDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/item_placeholder"
+            android:layout_toEndOf="@+id/itemStart"
+            android:layout_below="@id/itemType"
+            android:textColor="?android:textColorSecondary" />
+
+        <Button
+            android:id="@+id/delete_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/itemPriority"
+            android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/edit_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/itemPriority"
+            android:layout_below="@id/delete_appointment"
+            android:text="@string/edit" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -15,6 +15,9 @@
     <string name="list_all">List All</string>
     <string name="add_new">Add New</string>
     <string name="appointments">Appointments</string>
+    <string name="item_placeholder">placeholder</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
     <string-array name="appointment_statuses">
         <item>Proposed</item>

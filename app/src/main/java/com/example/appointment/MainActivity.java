@@ -1,7 +1,10 @@
 package com.example.appointment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,18 +12,51 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getName();
-    private static final String PREF_KEY = MainActivity.class.getPackage().toString();
 
-    EditText descriptionET;
+    private RecyclerView recyclerView;
+    private ArrayList<Appointment> appointmentList;
+    private AppointmentAdapter appointmentAdapter;
+    private int gridNumber = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        descriptionET = findViewById(R.id.editTextDescription);
+        appointmentList = new ArrayList<>();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
+        appointmentAdapter = new AppointmentAdapter(this, appointmentList);
+        recyclerView.setAdapter(appointmentAdapter);
+
+        initData();
+
+    }
+
+    private void initData() {
+        Appointment a1 = new Appointment(
+            "0", "proposed", new ArrayList<>(),
+            "check-up", 7, "kek",
+                new Date(), 30
+        );
+
+        Appointment a2 = new Appointment(
+                "1", "fulfilled", new ArrayList<>(),
+                "walk-in", 3, "keksz",
+                new Date(), 60
+        );
+
+        appointmentList.clear();
+        appointmentList.add(a1);
+        appointmentList.add(a1);
+        appointmentList.add(a2);
+        appointmentList.add(a2);
+        appointmentAdapter.notifyDataSetChanged();
     }
 
     @Override

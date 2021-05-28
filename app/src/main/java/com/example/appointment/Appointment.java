@@ -14,6 +14,9 @@ public class Appointment {
     private Date start;
     private int duration;
 
+    public Appointment() {
+    }
+
     public Appointment(String id, String status, ArrayList<Participant> participants, String appointmentType, int priority, String description, Date start, int duration) {
         this.id = id;
         this.status = status;

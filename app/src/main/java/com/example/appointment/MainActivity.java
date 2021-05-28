@@ -12,11 +12,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getName();
+
+    private FirebaseFirestore firestore;
+    private CollectionReference items;
 
     private RecyclerView recyclerView;
     private ArrayList<Appointment> appointmentList;
@@ -28,14 +36,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         appointmentList = new ArrayList<>();
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
         appointmentAdapter = new AppointmentAdapter(this, appointmentList);
         recyclerView.setAdapter(appointmentAdapter);
 
-        initData();
+        firestore = FirebaseFirestore.getInstance();
+        items = firestore.collection("appointments");
+        queryData();
 
+    }
+
+    private void queryData() {
+        appointmentList.clear();
+
+        items.orderBy("priority", Query.Direction.DESCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                Appointment item = document.toObject(Appointment.class);
+                appointmentList.add(item);
+            }
+
+            if (appointmentList.size() == 0) {
+                initData();
+                queryData();
+            }
+
+            appointmentAdapter.notifyDataSetChanged();
+        });
     }
 
     private void initData() {
@@ -51,12 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 new Date(), 60
         );
 
-        appointmentList.clear();
-        appointmentList.add(a1);
-        appointmentList.add(a1);
-        appointmentList.add(a2);
-        appointmentList.add(a2);
-        appointmentAdapter.notifyDataSetChanged();
+        items.add(a1);
+        items.add(a2);
+
+//        appointmentList.clear();
+//        appointmentList.add(a1);
+//        appointmentList.add(a1);
+//        appointmentList.add(a2);
+//        appointmentList.add(a2);
+//        appointmentAdapter.notifyDataSetChanged();
     }
 
     @Override

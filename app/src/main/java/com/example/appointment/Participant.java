@@ -5,6 +5,9 @@ public class Participant {
     private String actor;
     private String necessity;
 
+    public Participant() {
+    }
+
     public Participant(String status, String actor, String necessity) {
         this.status = status;
         this.actor = actor;

@@ -51,8 +51,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/item_placeholder"
-            android:layout_toEndOf="@+id/itemStart"
-            android:layout_below="@id/itemType"
+            android:layout_toEndOf="@+id/itemPriority"
             android:textColor="?android:textColorSecondary" />
 
         <Button
@@ -60,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginStart="0dp"
-            android:layout_toEndOf="@+id/itemPriority"
+            android:layout_toEndOf="@+id/itemDuration"
             android:text="@string/delete" />
 
         <Button
@@ -68,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginStart="0dp"
-            android:layout_toEndOf="@+id/itemPriority"
+            android:layout_toEndOf="@+id/itemStart"
             android:layout_below="@id/delete_appointment"
             android:text="@string/edit" />
 

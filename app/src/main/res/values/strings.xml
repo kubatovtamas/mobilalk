@@ -31,4 +31,35 @@
         <item>Checked-In</item>
         <item>Wait-List</item>
     </string-array>
+
+    <string-array name="appointment_types">
+        <item>Check-Up</item>
+        <item>Emergency</item>
+        <item>Follow-Up</item>
+        <item>Routine</item>
+        <item>Walk-In</item>
+    </string-array>
+
+    <string-array name="participant_statuses">
+        <item>Accepted</item>
+        <item>Declined</item>
+        <item>Tentative</item>
+        <item>Needs-Action</item>
+    </string-array>
+
+    <string-array name="participant_actors">
+        <item>Patient</item>
+        <item>Practitioner</item>
+        <item>Practitioner-Role</item>
+        <item>Related-Person</item>
+        <item>Device</item>
+        <item>Healthcare-Service</item>
+        <item>Location</item>
+    </string-array>
+
+    <string-array name="participant_required">
+        <item>Required</item>
+        <item>Optional</item>
+        <item>Information-Only</item>
+    </string-array>
 </resources>

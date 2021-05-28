@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         items.orderBy("priority", Query.Direction.DESCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 Appointment item = document.toObject(Appointment.class);
+//                item.setId(document.getId());
                 appointmentList.add(item);
             }
 
@@ -83,13 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
         items.add(a1);
         items.add(a2);
-
-//        appointmentList.clear();
-//        appointmentList.add(a1);
-//        appointmentList.add(a1);
-//        appointmentList.add(a2);
-//        appointmentList.add(a2);
-//        appointmentAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -110,21 +106,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(LOG_TAG, "On Destroy");
     }
 
-    public void onSubmit(View v) {
-        Log.i(LOG_TAG, "Submit");
-    }
-
-    public void onBack(View v) {
-        Log.i(LOG_TAG, "Back");
-    }
-
-    public void onAddParticipants(View v) {
-        Log.i(LOG_TAG, "Add Participants");
-
-        Intent intent = new Intent(this, AddParticipantsActivity.class);
-        startActivity(intent);
-    }
-
     public void onListAll(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -133,5 +114,22 @@ public class MainActivity extends AppCompatActivity {
     public void onAddNew(View view) {
         Intent intent = new Intent(this, AddAppointmentActivity.class);
         startActivity(intent);
+    }
+
+    public void onDeleteItem(Appointment appointment) {
+        DocumentReference ref = items.document(appointment.getId());
+
+        ref.delete().addOnSuccessListener(succ -> {
+            Log.d(LOG_TAG, "Delete successful, id: " + appointment.getId());
+        }).addOnFailureListener(fail -> {
+            Toast.makeText(this, "Delete failed.", Toast.LENGTH_LONG).show();
+            Log.d(LOG_TAG, "Delete failed, id: " + appointment.getId());
+        });
+
+        queryData();
+    }
+
+    public void onEditItem(Appointment appointment) {
+        Log.i(LOG_TAG, "Edit fn, id: " + appointment.getId());
     }
 }

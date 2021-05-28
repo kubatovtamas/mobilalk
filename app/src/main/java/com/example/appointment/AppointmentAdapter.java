@@ -57,24 +57,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             priorityText = itemView.findViewById(R.id.itemPriority);
             startText = itemView.findViewById(R.id.itemStart);
             durationText = itemView.findViewById(R.id.itemDuration);
-
-            itemView.findViewById(R.id.delete_appointment).setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.i(LOG_TAG, "Delete appointment called.");
-                        }
-                    }
-            );
-
-            itemView.findViewById(R.id.edit_appointment).setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Log.i(LOG_TAG, "Edit appointment called.");
-                        }
-                    }
-            );
         }
 
         public void bindTo(Appointment currentItem) {
@@ -83,6 +65,14 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             priorityText.setText(String.valueOf(currentItem.getPriority()));
             startText.setText(currentItem.getStart().toString());
             durationText.setText(String.valueOf(currentItem.getDuration()));
+
+            itemView.findViewById(R.id.delete_appointment).setOnClickListener(
+                    view -> ((MainActivity) context).onDeleteItem(currentItem)
+            );
+
+            itemView.findViewById(R.id.edit_appointment).setOnClickListener(
+                    view -> ((MainActivity) context).onEditItem(currentItem)
+            );
         }
     }
 }

@@ -9,7 +9,7 @@
     <string name="walk_in">Walk-in</string>
     <string name="priority">Priority</string>
     <string name="duration">Duration</string>
-    <string name="add_participants">Add Participants</string>
+    <string name="add_participants">Add Participant</string>
     <string name="submit">Submit</string>
     <string name="back">Back</string>
     <string name="list_all">List All</string>
@@ -18,6 +18,8 @@
     <string name="item_placeholder">placeholder</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="add_description">Add description</string>
+    <string name="date_placeholder">Date</string>
 
     <string-array name="appointment_statuses">
         <item>Proposed</item>

@@ -17,6 +17,20 @@ public class Appointment {
     public Appointment() {
     }
 
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id='" + id + '\'' +
+                ", status='" + status + '\'' +
+                ", participants=" + participants +
+                ", appointmentType='" + appointmentType + '\'' +
+                ", priority=" + priority +
+                ", description='" + description + '\'' +
+                ", start=" + start +
+                ", duration=" + duration +
+                '}';
+    }
+
     public Appointment(String id, String status, ArrayList<Participant> participants, String appointmentType, int priority, String description, Date start, int duration) {
         this.id = id;
         this.status = status;

@@ -52,19 +52,16 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             statusText = itemView.findViewById(R.id.itemStatus);
             actorText = itemView.findViewById(R.id.itemType);
             necessityText = itemView.findViewById(R.id.itemPriority);
-
-            itemView.findViewById(R.id.delete_participant).setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                        Log.i(LOG_TAG, "Delete participant called.");
-                  }
-            });
         }
 
         public void bindTo(Participant currentItem) {
             statusText.setText(currentItem.getStatus());
             actorText.setText(currentItem.getActor());
             necessityText.setText(currentItem.getNecessity());
+
+            itemView.findViewById(R.id.delete_participant).setOnClickListener(
+                    view -> ((AddAppointmentActivity) context).onDeleteParticipant(currentItem)
+            );
         }
     }
 }

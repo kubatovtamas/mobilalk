@@ -11,7 +11,6 @@
         android:theme="@style/Theme.Appointment">
         <activity android:name=".EditAppointmentActivity"></activity>
         <activity android:name=".AddAppointmentActivity" />
-        <activity android:name=".AddParticipantsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

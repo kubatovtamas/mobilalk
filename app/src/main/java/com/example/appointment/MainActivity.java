@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -26,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getName();
 
     private FirebaseFirestore firestore;
-    private CollectionReference items;
+    private CollectionReference appointmentCollection;
 
     private RecyclerView recyclerView;
     private ArrayList<Appointment> appointmentList;
@@ -47,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(appointmentAdapter);
 
         firestore = FirebaseFirestore.getInstance();
-        items = firestore.collection("appointments");
+        appointmentCollection = firestore.collection("appointments");
         queryData();
 
     }
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private void queryData() {
         appointmentList.clear();
 
-        items.orderBy("priority", Query.Direction.DESCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        appointmentCollection.orderBy("priority", Query.Direction.DESCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                 Appointment item = document.toObject(Appointment.class);
 //                item.setId(document.getId());
@@ -84,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 new Date(), 60
         );
 
-        items.add(a1);
-        items.add(a2);
+        appointmentCollection.add(a1);
+        appointmentCollection.add(a2);
     }
 
     @Override
@@ -117,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onDeleteItem(Appointment appointment) {
-        DocumentReference ref = items.document(appointment.getId());
+        DocumentReference ref = appointmentCollection.document(appointment.getId());
 
         ref.delete().addOnSuccessListener(succ -> {
             Log.d(LOG_TAG, "Delete successful, id: " + appointment.getId());
